@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour {
     private static readonly float zoomSpeedMouse = 0.5f;
 
     private static readonly float[] BoundsX = new float[] { -10f, 5f };
-    private static readonly float[] BoundsZ = new float[] { -18f, -4f };
+    private static readonly float[] BoundsZ = new float[] { -18f, 2f };
     private static readonly float[] ZoomBounds = new float[] { 10f, 85f };
     
     private Camera cam;
@@ -102,13 +102,15 @@ public class CameraMovement : MonoBehaviour {
 
     void PanCamera(Vector3 newPosition){
         Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPosition);
-        Vector3 move = new Vector3(offset.x * PanSpeed, 0, offset.y * PanSpeed);
+        Vector3 move = new Vector3(offset.x * PanSpeed, 0, offset.y * PanSpeed * 4);
 
-        transform.Translate(move, Space.World);
+		transform.Translate(move, Space.World);
 
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(transform.position.x, BoundsX[0], BoundsX[1]);
         pos.z = Mathf.Clamp(transform.position.z, BoundsZ[0], BoundsZ[1]);
+		pos.y = Mathf.Clamp(transform.position.y, 1.55f, 1.55f);
+		transform.position = pos;
 
         lastPanPosition = newPosition;
     }
