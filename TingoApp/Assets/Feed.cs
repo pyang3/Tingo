@@ -29,7 +29,18 @@ public class Feed : MonoBehaviour {
 			}
 
 		}
+	}
 
+	public void OnHealthChange(){
+		GameObject sliderObj = GameObject.Find("HealthSlider");
+		if (sliderObj != null) {
+			Slider healthSlider = sliderObj.GetComponent<Slider>();
+			var health = healthSlider.value;
+			if (health <= 0) {
+				Debug.Log ("Death");
+			}
+		}
+	
 	}
 
 	// Use this for initialization

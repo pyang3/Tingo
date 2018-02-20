@@ -1,0 +1,16 @@
+2/20 5:00 Meeting
+
+Everyone is in attendence
+
+The meeting is about finishing up a few things before the prototype is released.
+
+Since the last meeting:
+We have remade the git repo and fixed our gitignore problems
+Ben has created the main scene and has added a health system with a health bar and a way to feet the tingo, and a barebones menu
+Jon has written scripts which made the Tingo move arround the room at random and avoid objects
+Ian has gotten the unity project to work on Android and set up the camera movement 
+
+Before the next meeting:
+Ian wants to finish the speach recognition library, make icons, fix the boxy shadows
+Ben wants to finsih the health system and make a fuller menu
+Jon wants to finsih connection with the Google and Apple Fit API's and make new different movements for the Tingo 
