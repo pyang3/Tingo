@@ -1,0 +1,17 @@
+2/13 5:00 Meeting
+
+Everyone is in attendence
+
+The meeting is mostly about getting the gitignore file working and being able to push and pull on 
+git without issue.
+
+Since the last meeting:
+We have all strugled with git
+Ben has made the README and worked with Gitter
+Ian has made some models for the game in blender
+Jon has worked with getting git working and rescearched tensorflow
+
+Before the next meeting:
+Ian will finsih the models for the game
+Ben will finish the scenes for the game
+Jon will write scripts
