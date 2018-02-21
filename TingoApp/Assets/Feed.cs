@@ -9,17 +9,20 @@ public class Feed : MonoBehaviour {
 	float berryValue = .1f;
 
 	public void OnClick(){
-		Debug.Log ("Feeding...");
 		GameObject sliderObj = GameObject.Find("HealthSlider");
 		GameObject buttonObj = GameObject.Find ("Berry");
+
+		//sometimes there is an error and the GameObjects can't be found and are null
 		if (sliderObj != null && buttonObj != null) {
 			Slider healthSlider = sliderObj.GetComponent<Slider>();
 			var health = healthSlider.value;
+
+			//tries to feed the Tingo if under full health
 			if ((health + berryValue) < 1 && PlayerPrefs.GetInt("berries") > 0) {
 				healthSlider.value = berryValue + health;
 				PlayerPrefs.SetFloat("health", berryValue + health);
 				PlayerPrefs.SetInt ("berries", PlayerPrefs.GetInt ("berries") - 1);
-				Debug.Log (PlayerPrefs.GetInt("berries"));
+				//else tops off the Tingo's health
 			} else {
 				if (PlayerPrefs.GetInt ("berries") >= 1) {
 					healthSlider.value = 1;
@@ -30,7 +33,7 @@ public class Feed : MonoBehaviour {
 
 		}
 	}
-
+	//Kill the Tingo when health is zero
 	public void OnHealthChange(){
 		GameObject sliderObj = GameObject.Find("HealthSlider");
 		if (sliderObj != null) {
@@ -43,13 +46,9 @@ public class Feed : MonoBehaviour {
 	
 	}
 
-	// Use this for initialization
-	void Start () {
-		PlayerPrefs.SetInt("berries", 3);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	// Add berries for testing
+//	void Start () {
+//		PlayerPrefs.SetInt("berries", 3);
+//	}
+
 }
