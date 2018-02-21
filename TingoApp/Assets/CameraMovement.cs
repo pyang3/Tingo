@@ -4,49 +4,44 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
+	// pan and zoom speed
     private static readonly float PanSpeed = 20f;
     private static readonly float zoomSpeedTouch = 0.1f;
     private static readonly float zoomSpeedMouse = 0.5f;
 
+	//restrict movement to these bounds
     private static readonly float[] BoundsX = new float[] { -10f, 5f };
     private static readonly float[] BoundsZ = new float[] { -18f, 2f };
     private static readonly float[] ZoomBounds = new float[] { 10f, 85f };
     
     private Camera cam;
 
+	// keeps track of the previous position to calculate how far finger moved
     private Vector3 lastPanPosition;
     private int panFIngerId;
 
+	// keeps track of the previous position to calculate how far fingers moved
     private bool wasZoomingLastFrame;
     private Vector2[] lastZoomPositions;
 
+	//getting the camera
     void Awake(){
         cam = GetComponent<Camera>();
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer){
             HandleTouch();
-        }
-        else
-        {
+        }else{
             HandleMouse();
         }
     }
 
-    void HandleMouse()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
+    void HandleMouse(){
+        if (Input.GetMouseButtonDown(0)){
             lastPanPosition = Input.mousePosition;
-        }else if (Input.GetMouseButton(0))
-        {
+        }else if (Input.GetMouseButton(0)){
             PanCamera(Input.mousePosition);
         }
 
@@ -62,26 +57,20 @@ public class CameraMovement : MonoBehaviour {
                 wasZoomingLastFrame = false;
 
                 Touch touch = Input.GetTouch(0);
-                if(touch.phase == TouchPhase.Began)
-                {
+                if(touch.phase == TouchPhase.Began){
                     lastPanPosition = touch.position;
                     panFIngerId = touch.fingerId;
-                }
-                else if(touch.fingerId == panFIngerId && touch.phase == TouchPhase.Moved)
-                {
+                }else if(touch.fingerId == panFIngerId && touch.phase == TouchPhase.Moved){
                     PanCamera(touch.position);
                 }
                 break;
 
             case 2: // Two Fingers
                 Vector2[] newPositions = new Vector2[] { Input.GetTouch(0).position, Input.GetTouch(1).position };
-                if (!wasZoomingLastFrame)
-                {
+                if (!wasZoomingLastFrame){
                     lastZoomPositions = newPositions;
                     wasZoomingLastFrame = true;
-                }
-                else
-                {
+                }else{
                     float newDistance = Vector2.Distance(newPositions[0], newPositions[1]);
                     float oldDistance = Vector2.Distance(lastZoomPositions[0], lastZoomPositions[1]);
                     float offset = newDistance - oldDistance;
@@ -106,6 +95,7 @@ public class CameraMovement : MonoBehaviour {
 
 		transform.Translate(move, Space.World);
 
+		// Locking view to determined bounds
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(transform.position.x, BoundsX[0], BoundsX[1]);
         pos.z = Mathf.Clamp(transform.position.z, BoundsZ[0], BoundsZ[1]);
@@ -116,11 +106,7 @@ public class CameraMovement : MonoBehaviour {
     }
 
     void ZoomCamera(float offset, float speed){
-        if(offset == 0)
-        {
-            return;
-        }
-
+        if(offset == 0)return;
         cam.fieldOfView = Mathf.Clamp(cam.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
     }
 }
