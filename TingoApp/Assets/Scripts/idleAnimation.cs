@@ -21,7 +21,9 @@ public class idleAnimation : MonoBehaviour {
 	}
 
 	Vector3 getNewPos(){
-		float x = Random.Range(-16, 16);
+
+		//Get random vector 3 of a position to go to
+		float x = Random.Range(-16, 16); 
 		float z = Random.Range (-4, 4);
 		Vector3 retVal = new Vector3 (x, 0, z); 
 		return retVal;
@@ -34,29 +36,25 @@ public class idleAnimation : MonoBehaviour {
 		}
 	}
 
+	//Gets the actual path that the Tingo will take
 	void getPath(){
 		newTarget = getNewPos ();
 		nav.SetDestination (newTarget);
 	}
-
-	//Waits a few seconds for new path
+		
+	//Deals with waiting for the new path, whether or not the path is valid
 	IEnumerator wait(){	
 		waitCheck = true;
 		yield return new WaitForSeconds (timeForPath);
 		getPath ();
 		validPath = nav.CalculatePath (newTarget, path);
 
-		if (!nav.CalculatePath (newTarget, path)) {
-			Debug.Log ("invalid path");
-		}
-
+		//pauses at location and then moves on to the next one
 		while (!validPath) {
 			yield return new WaitForSeconds (7.0f);
 			getPath ();
 			validPath = nav.CalculatePath (newTarget, path);
 		}
-
-
 		waitCheck = false;
 	}
 }
