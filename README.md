@@ -35,3 +35,5 @@ We have put the apk for the app in the github repository, so installing it is re
 3. Through the file manager, go to the location that you saved the apk on the phone and run it
 4. Play Tingo
 
+Link to youtube video: https://www.youtube.com/watch?v=1dlcCvpH_Gw
+
