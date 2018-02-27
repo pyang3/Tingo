@@ -1,0 +1,16 @@
+2/27 5:00 Meeting
+
+Everyone is in attendence
+
+The meeting is about how to start working on the prototype realese
+
+Since the last meeting:
+We all submitted the prototype 
+Ben Made the menu more complete, added a tutorial to explain what the Tingo has to do, and worked on the health system
+Jon finished up prototype movement and looked into the google fit api
+Ian setup a library for using voice recognition
+
+Before the next meeting:
+Ben wants to link steps to the health system and kill Tingos
+Jon wants to make more player movements and actions for the output for machiene learning
+Ian wants to make a voice UI on ios and Android
