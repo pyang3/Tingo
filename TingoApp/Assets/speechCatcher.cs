@@ -24,7 +24,13 @@ public class speechCatcher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		var plugin = new AndroidJavaObject ("com.tingoapp.unityplugin.PluginClass");
+
+		AndroidJavaClass unityPlayer = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
+		AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject> ("currentActivity");
+		plugin.Call ("setContext", activity);
+
+		myText.text = "steps = " + plugin.Call<long> ("sayHi", "James");
 	}
 	
 	// Update is called once per frame
