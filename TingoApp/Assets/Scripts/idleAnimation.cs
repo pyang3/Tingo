@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class idleAnimation : MonoBehaviour {
 	
@@ -13,7 +14,6 @@ public class idleAnimation : MonoBehaviour {
 	bool validPath;
 	Vector3 newTarget;
 
-
 	// Use this for initialization
 	void Start () {
 		nav = GetComponent<NavMeshAgent> ();
@@ -21,7 +21,6 @@ public class idleAnimation : MonoBehaviour {
 	}
 
 	Vector3 getNewPos(){
-
 		//Get random vector 3 of a position to go to
 		float x = Random.Range(-16, 16); 
 		float z = Random.Range (-4, 4);
@@ -52,6 +51,8 @@ public class idleAnimation : MonoBehaviour {
 		//pauses at location and then moves on to the next one
 		while (!validPath) {
 			yield return new WaitForSeconds (7.0f);
+			//getBody. (Vector3.up * 10, ForceMode.Impulse);
+			iTween.RotateBy (gameObject, iTween.Hash("z",180, "time", 1));
 			getPath ();
 			validPath = nav.CalculatePath (newTarget, path);
 		}
