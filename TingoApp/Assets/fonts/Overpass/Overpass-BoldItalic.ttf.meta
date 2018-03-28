@@ -1,0 +1,38 @@
+fileFormatVersion: 2
+guid: fd3919b8ae424ff439fae227762752b6
+timeCreated: 1520632168
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Overpass
+  fontNames:
+  - Overpass
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c5c93b12a3250e440962557081bd74e8, type: 3}
+  - {fileID: 12800000, guid: e8b563823a41a3f468498f9011288fab, type: 3}
+  - {fileID: 12800000, guid: 753a5516bf775974eaa7f145b4edd12d, type: 3}
+  - {fileID: 12800000, guid: a56bde4654a0a35469d09ee0ef6f4f9d, type: 3}
+  - {fileID: 12800000, guid: 903a19865f6631744bf5daf3ead4cea4, type: 3}
+  - {fileID: 12800000, guid: 26679e575a2461246bef95c9a4ac72bd, type: 3}
+  - {fileID: 12800000, guid: 6eb4158ace86b854ba16b9b7d3783560, type: 3}
+  - {fileID: 12800000, guid: 5e365c5bab467124a99601ae5deef11f, type: 3}
+  - {fileID: 12800000, guid: 692fa07b99e72ae4dbeadc0af229c2ed, type: 3}
+  - {fileID: 12800000, guid: 66cfbd2cfd3be1d468d0d648c50f0d58, type: 3}
+  - {fileID: 12800000, guid: 3f2e847c98237c545beb43dfc18f8e0e, type: 3}
+  - {fileID: 12800000, guid: fad1c9cdbf5bab24d951efb5dca30e27, type: 3}
+  - {fileID: 12800000, guid: 2b858efdb8c7d6a448f059f3028ef73d, type: 3}
+  - {fileID: 12800000, guid: 0fd1947e2177c89448ba470b3013fd94, type: 3}
+  - {fileID: 12800000, guid: 0861817f77368d74fa4bd38a39125a1a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
