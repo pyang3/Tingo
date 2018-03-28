@@ -33,6 +33,8 @@ It will also be possible to talk to the Tingo and have it react to the words tha
 
 # Installing and Playing Tingo
 
+We have an App on the Google Play store for easy use!
+
 We have put the apk for the app in the github repository, so installing it is relatively easy.
 
 1. Use the git clone command from the terminal and clone the repository 
@@ -40,5 +42,5 @@ We have put the apk for the app in the github repository, so installing it is re
 3. Through the file manager, go to the location that you saved the apk on the phone and run it
 4. Play Tingo
 
-Link to youtube video: https://www.youtube.com/watch?v=1dlcCvpH_Gw
+Link to youtube video: https://youtu.be/0_vBo2degrY
 
