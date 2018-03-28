@@ -13,7 +13,7 @@ public class Feed : MonoBehaviour {
 	int maxSteps = 5000; 				// After this ammount of steps has been hit in a day, the rest will go to XP || DEFAULT:5000
 	int stepsPerBerry = 500; 			// Steps needed to get a berry || DEAFUALT : 500
 
-	int steps = 3000;				//This will be replaced with the actual steps that were gathered that day
+	//int steps = 1375;				//This will be replaced with the actual steps that were gathered that day
 
 	private PedometerPlugin pedometerPlugin;
 
@@ -50,6 +50,11 @@ public class Feed : MonoBehaviour {
 
 		}
 	}
+
+	public void changeScene(string loadScene){
+		SceneManager.LoadScene(loadScene);
+	}
+
 	//Kill the Tingo when health is zero
 	public void OnHealthChange(){
 		GameObject sliderObj = GameObject.Find("HealthSlider");
@@ -58,7 +63,7 @@ public class Feed : MonoBehaviour {
 			var health = healthSlider.value;
 			PlayerPrefs.SetFloat ("health", health);
 			if (health <= 0) {
-				Debug.Log ("Death");
+				changeScene ("death");
 			}
 		}
 	
@@ -67,12 +72,12 @@ public class Feed : MonoBehaviour {
 	//Runs each time game starts
 	public void Start () {
 		
-//		pedometerPlugin = PedometerPlugin.GetInstance ();
-//		pedometerPlugin.SetDebug (0);
-//
-//		pedometerPlugin.Init ();
-//		pedometerPlugin.StartPedometerService (SensorDelay.SENSOR_DELAY_FASTEST);
-//		steps = pedometerPlugin.GetStepToday ();
+		pedometerPlugin = PedometerPlugin.GetInstance ();
+		pedometerPlugin.SetDebug (0);
+
+		pedometerPlugin.Init ();
+		pedometerPlugin.StartPedometerService (SensorDelay.SENSOR_DELAY_FASTEST);
+		steps = pedometerPlugin.GetStepToday ();
 
 
 //		PlayerPrefs.SetInt ("steps",3000);
@@ -96,7 +101,7 @@ public class Feed : MonoBehaviour {
 		//calculate steps that go to different things
 		
 		int newSteps = steps - oldSteps;
-
+		Debug.Log (steps + " old steps " + oldSteps);
 		if (steps > maxSteps) {
 			//find the total number of xp that needs to be added
 			float addedXP = (float)((double)newSteps * .0001); //DEFAULT .0001
@@ -110,9 +115,10 @@ public class Feed : MonoBehaviour {
 			PlayerPrefs.SetFloat ("xp", PlayerPrefs.GetFloat ("xp") + addedXP);
 			PlayerPrefs.SetInt ("steps", PlayerPrefs.GetInt ("steps") + newSteps);
 		} else {
-			Debug.Log ("Adding to berries");
+			
 			//find the number of new berries to add
 			int newBerries = newSteps / stepsPerBerry;
+			Debug.Log ("new berries "+ newSteps);
 			PlayerPrefs.SetInt ("berries",PlayerPrefs.GetInt("berries")+newBerries);
 
 			//find number to add to steps -> other steps aren't used for berries so aren't included
