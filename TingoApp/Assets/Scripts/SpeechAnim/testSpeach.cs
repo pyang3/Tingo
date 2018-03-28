@@ -8,8 +8,11 @@ public class testSpeach : MonoBehaviour {
 	private UnityAction<string> action;
 	string input = "";
 	private Rigidbody getBody;
+	public AudioClip yay;
+	private AudioSource source;
 
 	void Awake(){
+		source = GetComponent<AudioSource> ();
 		action = new UnityAction<string>(ToTextAction);
 	}
 
@@ -58,10 +61,14 @@ public class testSpeach : MonoBehaviour {
 		if (input == "flip") {
 			Flip ();
 		}
+		if (input == "speak") {
+			source.PlayOneShot(yay);
+		}
 		input = null;
 	}
 
 	IEnumerator Jump(){
+		source.PlayOneShot(yay);
 		float timer = 0.0f;
 		while (timer <= jumpTime) {
 			float height = Mathf.Sin (timer / jumpTime * Mathf.PI) * jumpHeight;
@@ -70,7 +77,7 @@ public class testSpeach : MonoBehaviour {
 			yield return null;
 		}
 
-		transform.localPosition = new Vector3(transform.localPosition.x, -1.9147f, transform.localPosition.z);
+		transform.localPosition = new Vector3(transform.localPosition.x, .5947088f, transform.localPosition.z);
 	}
 
 	void Flip(){
