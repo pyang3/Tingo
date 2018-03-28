@@ -34,7 +34,7 @@ public class VoiceButton : MonoBehaviour {
 
 	public void OnPartialResult(string result) {
 		//resultText.text = result;
-		EventManager.TriggerEvent("Speech", result);
+		//EventManager.TriggerEvent("Speech", result);
 	}
 
 	public void OnAvailabilityChange(bool available) {

@@ -2,11 +2,10 @@
 
 [![Join the chat at https://gitter.im/Tingo-Github/Lobby](https://badges.gitter.im/Tingo-Github/Lobby.svg)](https://gitter.im/Tingo-Github/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+
 **This is not our only repository**
 
 The link to the second one with the tensorflow code is [here](https://github.com/bseibo61/Tingo-TensorFlow)
-
-
 
 A friend that keeps you on your toes.
 
