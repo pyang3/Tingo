@@ -13,7 +13,7 @@ public class Feed : MonoBehaviour {
 	int maxSteps = 5000; 				// After this ammount of steps has been hit in a day, the rest will go to XP || DEFAULT:5000
 	int stepsPerBerry = 500; 			// Steps needed to get a berry || DEAFUALT : 500
 
-	//int steps = 1375;				//This will be replaced with the actual steps that were gathered that day
+	int steps = 1375;				//This will be replaced with the actual steps that were gathered that day
 
 	private PedometerPlugin pedometerPlugin;
 
