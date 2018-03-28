@@ -11,7 +11,22 @@ public class parentPath : MonoBehaviour {
 		Debug.Log (transform.position.x);
 		Debug.Log (getPosition);
 		if (getPosition < -4.095 && getPosition > -4.111) {
-			iTween.MoveTo (gameObject, iTween.Hash ("path", iTweenPath.GetPath ("testPath"), "time", 5, "delay", 2));
-		}	
+			positionOne ();
+		}
+	}
+
+	void positionTwo(){
+		iTween.MoveTo (gameObject, iTween.Hash ("path", iTweenPath.GetPath ("pathTwo"), "time", 5, "delay", 2));
+		positionThree ();
+	}
+
+	void positionOne(){
+		iTween.MoveTo (gameObject, iTween.Hash ("path", iTweenPath.GetPath ("pathOne"), "time", 5, "delay", 2));
+		positionTwo ();
+	}
+
+	void positionThree(){
+		iTween.MoveTo (gameObject, iTween.Hash ("path", iTweenPath.GetPath ("pathThree"), "time", 5, "delay", 2));
+		positionTwo ();		
 	}
 }

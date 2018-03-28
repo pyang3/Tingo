@@ -1,18 +1,10 @@
-﻿/*Questions for ben
- * Would it be better to catagorize the inputs into the NN?
- * What would the output of the NN be? A simple string of what we want it to do? Something else
- * Confusion
-*/
-
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class testSpeach : MonoBehaviour {
-	string[] actionWords = new string[] {"jump", "hello", "spin"};
 	private UnityAction<string> action;
 	string input = "";
 	private Rigidbody getBody;
@@ -32,51 +24,57 @@ public class testSpeach : MonoBehaviour {
 	void ToTextAction(string newText){
 		string[] words = newText.Split (' ');
 		int jump = 0;
-		int hello = 0;
 		int flip = 0;
 		int speak = 0;
 		foreach (string x in words) {
 			Debug.Log (x);
 			if (x == "jump") {
 				jump++;
-			} else if (x == "hello") {
-				hello++;
-			} else if (x == "spin") {
+			} else if (x == "flip") {
 				flip++;
 			} else if (x == "yell" || x == "speak") {
 				speak++;
 			}
 		}
-		if (hello > flip && hello > jump && flip > speak)
-			input = "hello";
-		else if (flip > hello && flip > jump && flip > speak)
+		if (speak > flip && speak > jump)
+			input = "speak";
+		else if (flip > jump && flip > speak)
 			input = "flip";
-		else if (jump > hello && jump > flip && jump > speak)
+		else if (jump > flip && jump > speak)
 			input = "jump";
 		else
 			Debug.Log( "null");
 	}
 
 	float jumpTime = .8f;
-	float jumpHeight = 2.0f;
+	float jumpHeight = 5.0f;
+	float realHeight = .5947088f;
 	// Use this for initialization
 
 	void Update(){
 		if (input == "jump") {
 			StartCoroutine(Jump ());
 		}
+		if (input == "flip") {
+			Flip ();
+		}
+		input = null;
 	}
 
 	IEnumerator Jump(){
 		float timer = 0.0f;
-		//iTween.RotateBy (gameObject, iTween.Hash("z",180, "time", 1));
 		while (timer <= jumpTime) {
 			float height = Mathf.Sin (timer / jumpTime * Mathf.PI) * jumpHeight;
-			transform.localPosition = new Vector3(transform.localPosition.x, height, 0);
+			transform.localPosition = new Vector3(transform.localPosition.x, height, transform.localPosition.z);
 			timer += Time.deltaTime;
 			yield return null;
 		}
 
-		transform.localPosition = Vector3.zero;
+		transform.localPosition = new Vector3(transform.localPosition.x, -1.9147f, transform.localPosition.z);
+	}
+
+	void Flip(){
+		iTween.RotateBy (gameObject, iTween.Hash("x", -.5, "speed", 125, "delay", .001));
+		StartCoroutine (Jump ());
 	}
 }

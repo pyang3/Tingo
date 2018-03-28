@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class pathAnim : MonoBehaviour {
 	float jumpTime = .8f;
-	float jumpHeight = 2.0f;
+	float jumpHeight = 5.0f;
+	float realHeight = .5947088f;
 	// Use this for initialization
 
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			StartCoroutine(Jump ());
 		}
+		if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			Flip ();
+		}
 	}
 
 	IEnumerator Jump(){
+		transform.localPosition = new Vector3(0, realHeight, 0);
 		float timer = 0.0f;
-		//iTween.RotateBy (gameObject, iTween.Hash("z",180, "time", 1));
 		while (timer <= jumpTime) {
 			float height = Mathf.Sin (timer / jumpTime * Mathf.PI) * jumpHeight;
 			transform.localPosition = new Vector3(transform.localPosition.x, height, 0);
@@ -23,6 +27,11 @@ public class pathAnim : MonoBehaviour {
 			yield return null;
 		}
 
-		transform.localPosition = Vector3.zero;
+		transform.localPosition = new Vector3(0, realHeight, 0);
+	}
+
+	void Flip(){
+		iTween.RotateBy (gameObject, iTween.Hash("z", -.5, "speed", 125, "delay", .001));
+		StartCoroutine (Jump ());
 	}
 }
