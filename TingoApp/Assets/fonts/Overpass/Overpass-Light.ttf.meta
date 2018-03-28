@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 692fa07b99e72ae4dbeadc0af229c2ed
+timeCreated: 1520632168
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Overpass
+  fontNames:
+  - Overpass
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 26679e575a2461246bef95c9a4ac72bd, type: 3}
+  - {fileID: 12800000, guid: 5e365c5bab467124a99601ae5deef11f, type: 3}
+  - {fileID: 12800000, guid: 66cfbd2cfd3be1d468d0d648c50f0d58, type: 3}
+  - {fileID: 12800000, guid: 3f2e847c98237c545beb43dfc18f8e0e, type: 3}
+  - {fileID: 12800000, guid: 2b858efdb8c7d6a448f059f3028ef73d, type: 3}
+  - {fileID: 12800000, guid: 0fd1947e2177c89448ba470b3013fd94, type: 3}
+  - {fileID: 12800000, guid: 0861817f77368d74fa4bd38a39125a1a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
