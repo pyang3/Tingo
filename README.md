@@ -15,15 +15,14 @@ A friend that keeps you on your toes.
 # Minimal Viable Product (MVP)
  The minimal viable product for this app will include:
   - A UI where users can see their Tingo and its health stats
-  - Connectivity with Google and Apple fit API's to track steps, affecting Tingo health
-  - Speech recognition with TensorFlow
-  - Performing actions based off of what was said
-  - App created through Unity that will be on IOS and Android
+  - Connectivity with Google Fit API's to track steps, affecting Tingo health
+  - Performing actions based off of what was said based off machiene learning
+  - App created through Unity that will be on Android
 
 # Add-on Features
  - Tracking sleep and diet to effect Tingo health
- - Basic conversation with the Tingo
  - Collectable items and wearables earned from leveling up
+ - IOS Version
 
  # User Story
 
