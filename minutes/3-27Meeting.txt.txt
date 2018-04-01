@@ -1,0 +1,16 @@
+3/27 5:00 Meeting
+
+Everyone is in attendence
+
+This meeting is about finishing things up before the alpha
+
+Since the last meeting:
+Ben has tried and given up on tensorflow, which is in the MVP and not the user stories
+Jon has changed animations, and added ui elements
+Ian has worked with google fit api and apple health to get steps
+
+Before the next meeting:
+Ben will finsih the health system, converting steps to berries, and the xp system
+Jon will finish the new animaitons and work on tensorflow
+Ian will finsih apple health and google fit
+

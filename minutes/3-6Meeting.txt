@@ -1,0 +1,17 @@
+3/6 5:00 Meeting
+
+Everyone is in attendence 
+
+This is mostly about begining the speach neural net
+
+Since the last meeting:
+We have all done rescearch
+Ben has looked into the google and apple fit api's and integrating them in the health system
+Ian has restructured the code so observers can get the voice recordings as strings
+Jon registered the google fit api
+
+Before the next meeting:
+Ben wants to fix the health system steps and learn Tensorflow
+Ian wants to get speach recognition working on ios and android
+Jon wants to get steps from the google and apple fit api's and learn Tensorflow
+
