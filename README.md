@@ -27,8 +27,8 @@ A friend that keeps you on your toes.
  # User Story
 
 When I open the app, I will be able to see my Tingo and its health.  It's health is linked to the number of steps I have taken that day.  If the I do not hit enough steps, the Tingo will lose health until it dies, at which point I can make a new Tingo.  If I go over my step amount, the Tingo will gain XP and can level up.
+It will also be possible to talk to the Tingo and have it react to the words that I say.  It can make noises or move around the room based off my voice input.  It will also be possible to talk to the Tingo and have it react to the words that I say.  It can make noises or move around the room based off my voice input.
 
-It will also be possible to talk to the Tingo and have it react to the words that I say.  It can make noises or move around the room based off my voice input.
 
 # Installing and Playing Tingo
 
@@ -36,4 +36,6 @@ We have an App on the Google Play store for easy use!
 Here is the [link](https://play.google.com/store/apps/details?id=com.tingoapp)
 
 Link to youtube video: https://youtu.be/0_vBo2degrY
+
+
 
