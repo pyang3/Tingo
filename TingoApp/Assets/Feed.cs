@@ -79,10 +79,6 @@ public class Feed : MonoBehaviour {
 		pedometerPlugin.StartPedometerService (SensorDelay.SENSOR_DELAY_FASTEST);
 		steps = pedometerPlugin.GetStepToday ();
 
-
-//		PlayerPrefs.SetInt ("steps",3000);
-//		PlayerPrefs.SetInt ("berries",0);
-
 		//get time as ascii value
 		int d1 = DateTime.Now.Hour;
 		System.DateTime epochStart = new System.DateTime(2018, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
@@ -101,9 +97,9 @@ public class Feed : MonoBehaviour {
 		//calculate steps that go to different things
 		
 		int newSteps = steps - oldSteps;
-		Debug.Log (steps + " old steps " + oldSteps);
-		if (steps > maxSteps) {
-			//find the total number of xp that needs to be added
+
+		if (oldSteps > maxSteps) {
+			// Convert all to XP
 			float addedXP = (float)((double)newSteps * .0001); //DEFAULT .0001
 			Debug.Log("steps:"+steps+" maxsteps "+maxSteps);
 			if ((PlayerPrefs.GetFloat ("xp") + addedXP) > 1) {
@@ -114,8 +110,8 @@ public class Feed : MonoBehaviour {
 			}
 			PlayerPrefs.SetFloat ("xp", PlayerPrefs.GetFloat ("xp") + addedXP);
 			PlayerPrefs.SetInt ("steps", PlayerPrefs.GetInt ("steps") + newSteps);
-		} else {
-			
+		}else if(steps < maxSteps){
+			// Convert all to berries
 			//find the number of new berries to add
 			int newBerries = newSteps / stepsPerBerry;
 			Debug.Log ("new berries "+ newSteps);
@@ -126,42 +122,33 @@ public class Feed : MonoBehaviour {
 				int usedSteps = stepsPerBerry / newBerries;
 				PlayerPrefs.SetInt ("steps", (oldSteps + usedSteps));
 			}
+		}else{
+			// Part berries part XP
+			int berrySteps = newSteps / 2;
+			int XPSteps = newSteps / 2;
+
+			// Convert some to XP
+			float addedXP = (float)((double)XPSteps * .0001); //DEFAULT .0001
+			if ((PlayerPrefs.GetFloat ("xp") + addedXP) > 1) {
+				float xpToLevel = 1 - PlayerPrefs.GetFloat ("xp");
+				addedXP = addedXP - xpToLevel;
+				PlayerPrefs.SetInt ("level", PlayerPrefs.GetInt ("level") + 1);
+				PlayerPrefs.SetFloat ("xp", 0);
+			}
+			PlayerPrefs.SetFloat ("xp", PlayerPrefs.GetFloat ("xp") + addedXP);
+			PlayerPrefs.SetInt ("steps", PlayerPrefs.GetInt ("steps") + XPSteps);
+
+
+			//find the number of new berries to add
+			int newBerries = berrySteps / stepsPerBerry;
+			PlayerPrefs.SetInt ("berries",PlayerPrefs.GetInt("berries")+newBerries);
+
+			//find number to add to steps -> other steps aren't used for berries so aren't included
+			if (newBerries != 0) {
+				int usedSteps = stepsPerBerry / newBerries;
+				PlayerPrefs.SetInt ("steps", (oldSteps + usedSteps));
+			}
 		}
-
-
-
-//This is a better way to do it but it doesn't work
-//		int berrySteps = (steps>maxSteps)?(newSteps-maxSteps):(newSteps);
-//		int xpSteps = newSteps - berrySteps;
-//		Debug.Log("berry: "+berrySteps+" new "+newSteps);
-//			
-//		//find the number of new berries to add
-//		int newBerries = berrySteps / stepsPerBerry;
-//		PlayerPrefs.SetInt ("berries",PlayerPrefs.GetInt("berries")+newBerries);
-//
-//		//find number to add to steps -> other steps aren't used for berries so aren't included
-//		if (newBerries != 0) {
-//			int usedSteps = stepsPerBerry / newBerries;
-//			PlayerPrefs.SetInt ("steps", (oldSteps + usedSteps));
-//		}
-//
-//		//Add XP if steps overflowed
-//		Debug.Log("xpsteps: "+xpSteps);
-//		if(xpSteps > 0){
-//			//find the total number of xp that needs to be added
-//			float addedXP = (float)((double)xpSteps * .0001);
-//
-//			//check if player levels up before adding new xp
-//			if ((PlayerPrefs.GetFloat ("xp") + addedXP) > 1) {
-//				float xpToLevel = 1 - PlayerPrefs.GetFloat ("xp");
-//				addedXP = addedXP - xpToLevel;
-//				PlayerPrefs.SetInt ("level", PlayerPrefs.GetInt ("level") + 1);
-//				PlayerPrefs.SetFloat ("xp",0);
-//			}
-//			PlayerPrefs.SetFloat("xp",PlayerPrefs.GetFloat("xp")+addedXP);
-//			PlayerPrefs.SetInt ("steps",PlayerPrefs.GetInt("steps")+xpSteps);
-//			Debug.Log ("level: "+PlayerPrefs.GetInt("level")+" XP: "+PlayerPrefs.GetFloat("xp"));
-//		}
 
 		//reduce health
 		PlayerPrefs.SetFloat ("health", healthDeduction);
