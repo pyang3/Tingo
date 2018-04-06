@@ -2389,6 +2389,7 @@ MonoBehaviour:
   lt: {fileID: 1245630916}
   window: {fileID: 1825847551}
   light: {fileID: 1289121862}
+  cam: {fileID: 1964602085}
 --- !u!1 &1261768831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,6 +3748,7 @@ GameObject:
   - component: {fileID: 1964602081}
   - component: {fileID: 1964602080}
   - component: {fileID: 1964602084}
+  - component: {fileID: 1964602085}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3828,6 +3830,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad39dec83062494992417c9282be565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1964602085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964602079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82bc9edf56b5e44d90b0a5481aff80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cBackground: {fileID: 1964602082}
+  nightColor:
+    serializedVersion: 2
+    rgba: 4282914816
+  dayColor:
+    serializedVersion: 2
+    rgba: 4293256677
 --- !u!1 &2097141340
 GameObject:
   m_ObjectHideFlags: 0
