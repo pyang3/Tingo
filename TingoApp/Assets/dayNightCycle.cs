@@ -2,39 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/*
- * Peter Yang Collab with Tingo
- * Main Script for day and night cycle
- * 
- */
-
-
 public class dayNightCycle : MonoBehaviour {
-	public Light lt; //Controls the light in directional light.
-	public windowStatus window; //Controls the window 
-	public lightControl light; //Controls the lamp
-	public cameraBackground cam; //Controls the overall background
-
+	public Light lt;
+	public windowStatus window;
+	public lightControl light;
+	public cameraBackground cam;
+	private Color maxColor = new Color32(255,244,215,255);
+	private Color minColor = new Color32 (0, 0, 0, 0);
 	// Use this for initialization
 	void Start () {
-		lt = GetComponent<Light> (); //initalize
+		lt = GetComponent<Light> ();
 
 	}
 	//Slowly transition into nighttime
 	void dark(){
 		if (lt.color.r < 0 && lt.color.b < 0 && lt.color.g < 0 && lt.color.a < 0) {
-			light.turnOn (); //once light is fully dark turn on lamp.
+			window.night();
+			light.turnOn ();
+			cam.nightTime ();
 		} else {
-			lt.color -= Color.white / 5.0F * Time.deltaTime; //slowly dim the directional lights
+			lt.color -= Color.white / 5.0F * Time.deltaTime;
 		}
 	}
 	//Slowly transition into daytime.
 	void normal(){
 		if (lt.color.r > 0.780 && lt.color.b > 0.881 && lt.color.g > 1 && lt.color.a > 0.780) {
-			light.turnOff (); //once fully daytime turn off the lamp
+			window.day ();
+			light.turnOff ();
+			cam.dayTime ();
 		} else {
-			lt.color += Color.white / 5.0F * Time.deltaTime; //slowly turn on the directional lights
+			lt.color += Color.white / 5.0F * Time.deltaTime;
 		}
 	}
 	// Update is called once per frame
@@ -46,19 +43,13 @@ public class dayNightCycle : MonoBehaviour {
 		 * Checks real time to see if it is night time 7pm-6:59am.
 		 */
 		if (currentTime > nightTime || currentTime < dayTime) { 
-			//Starts night time functions.
 			dark ();
-			window.night(); //windows turns darker
-			cam.nightTime (); //overall background turns darker
 		} 
 		/*
 		 * Checks real-time to see if it is day time 7am-6:59pm.
 		 */
 		if(currentTime < nightTime && currentTime > dayTime){
-			//Starts day time functions
 			normal ();
-			window.day (); //windows returns to normal
-			cam.dayTime (); //overall background returns to normal.
 		}
 	}
 }
