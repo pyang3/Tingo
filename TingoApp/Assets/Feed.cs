@@ -74,10 +74,6 @@ public class Feed : MonoBehaviour {
 		pedometerPlugin.StartPedometerService (SensorDelay.SENSOR_DELAY_FASTEST);
 		steps = pedometerPlugin.GetStepToday ();
 
-
-//		PlayerPrefs.SetInt ("steps",3000);
-//		PlayerPrefs.SetInt ("berries",0);
-
 		//get time as ascii value
 		int d1 = DateTime.Now.Hour;
 		System.DateTime epochStart = new System.DateTime(2018, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
@@ -92,7 +88,6 @@ public class Feed : MonoBehaviour {
 			oldSteps = steps;
 			PlayerPrefs.SetInt ("steps", steps);
 		}
-			
 
 		//reduce health
 		PlayerPrefs.SetFloat ("health", healthDeduction);
