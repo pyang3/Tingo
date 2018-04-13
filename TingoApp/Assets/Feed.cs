@@ -63,6 +63,9 @@ public class Feed : MonoBehaviour {
 			var health = healthSlider.value;
 			PlayerPrefs.SetFloat ("health", health);
 			if (health <= 0) {
+				PlayerPrefs.SetInt("baseSubtract", pedometerPlugin.GetTotalStep());
+//				pedometerPlugin.DeleteData ();
+//				pedometerPlugin.StopPedometerService ();
 				changeScene ("death");
 			}
 		}
