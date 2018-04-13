@@ -227,6 +227,9 @@ namespace UnitySentiment
                                 if (!string.IsNullOrEmpty(Words[i].Trim()))
                                 {
                                     float valueOfWord = Check(Words[i].Trim());
+									if(Words[i].Contains("*")){
+										valueOfWord = -1f;
+									}
                                     // save the values in a List
                                     Values.Add(valueOfWord);
                                 }

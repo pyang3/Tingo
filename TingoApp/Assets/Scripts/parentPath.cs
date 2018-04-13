@@ -20,7 +20,7 @@ public class parentPath : MonoBehaviour {
 			goToPositionTwo ();
 		}
 
-		if ((getPositionX < 5.22 && getPositionX > 5.20) && (getPositionZ > 2.8 && getPositionZ < 2.88)) {
+		if ((getPositionX < 5.30 && getPositionX > 5.10) && (getPositionZ > 2.7 && getPositionZ < 2.9)) {
 			goToPositionThree ();
 		}
 
@@ -32,18 +32,18 @@ public class parentPath : MonoBehaviour {
 	void goToPositionThree(){
 		iTween.MoveTo (gameObject, iTween.Hash ("path", iTweenPath.GetPath ("pathTwo"), "speed", 4, "delay", 2, "orientToPath", true));
 //		positionThree ();
-		Debug.Log("go to position three");
+//		Debug.Log("go to position three");
 	}
 
 	void goToPositionTwo(){
 		iTween.MoveTo (gameObject, iTween.Hash ("path", iTweenPath.GetPath ("pathOne"), "speed", 4, "delay", 2, "orientToPath", true));
 //		StartCoroutine (waitTime ());
-		Debug.Log("go to position two");
+//		Debug.Log("go to position two");
 	}
 //
 	void goToPositionOne(){
 		iTween.MoveTo (gameObject, iTween.Hash ("path", iTweenPath.GetPath ("pathThree"), "speed", 4, "delay", 2, "orientToPath", true));	
-		Debug.Log("go to position one");
+//		Debug.Log("go to position one");
 	}
 
 }

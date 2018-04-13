@@ -24,6 +24,7 @@ public class SendTextToAnalyse : MonoBehaviour {
 
 	void OnEnable() 
 	{
+		Debug.Log ("This is onEnable");
 		Application.runInBackground = true;
 		// Initialize the local database
 		predictionObject.Initialize();
@@ -43,6 +44,7 @@ public class SendTextToAnalyse : MonoBehaviour {
 
 	public void SendPredictionText()
 	{
+		Debug.Log ("This is SendPredictionText");
 		// Thread-safe computations
 		predictionObject.PredictSentimentText(textToSend.text);
 
@@ -55,7 +57,8 @@ public class SendTextToAnalyse : MonoBehaviour {
 
 	// Sentiment Analysis Thread
 	private void GetAnalysisFromThread(Vector3 analysisResult)
-	{		
+	{	
+		Debug.Log ("This is GetAnalysisFromThread");
 		SentimentAnalysisResponse = analysisResult;
 		responseFromThread = true;
 		//trick to call method to the main Thread
@@ -63,6 +66,7 @@ public class SendTextToAnalyse : MonoBehaviour {
 
 	private IEnumerator WaitResponseFromThread()
 	{
+		Debug.Log ("This is WaitResponseFromThread");
 		while(!responseFromThread) // Waiting For the response
 		{
 			yield return null;
@@ -76,6 +80,7 @@ public class SendTextToAnalyse : MonoBehaviour {
 
 	private void PrintAnalysis()
 	{
+		Debug.Log ("This is PrintAnalysis");
 		PositivePercent.text = SentimentAnalysisResponse.x + " % : Positive"; 
 		NegativePercent.text = SentimentAnalysisResponse.y + " % : Negative";
 		NeutralPercent.text = SentimentAnalysisResponse.z + " % : Neutral";
